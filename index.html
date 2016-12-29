@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html ng-app="smallbore">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+		<title>music</title>
+		<link href="css/ionic.css" rel="stylesheet" type="text/css">
+		<link href="css/style.css" rel="stylesheet" type="text/css">
+		<!--<script src="js/angular.js"></script>-->
+		<!--<script src="js/angular-ui-router.js"></script>-->
+		<script src="js/ionic.bundle.js"></script>
+		<script src="js/base.js"></script>
+
+	</head>
+
+	<body ng-app="starter">
+		<ion-nav-view></ion-nav-view>
+		<script id="menu.html" type="text/ng-template">
+			<ion-side-menus>
+				<ion-pane ion-side-menu-content>
+					<ion-nav-bar class="bar-balanced nav-title-slide-ios7">
+						<ion-nav-back-button class="button-clear"><i class="icon ion-chevron-left"></i> Back</ion-nav-back-button>
+					</ion-nav-bar>
+					<ion-nav-view name="menuContent" animation="slide-left-right"></ion-nav-view>
+				</ion-pane>
+
+				<ion-side-menu side="left">
+					<header class="bar bar-header bar-balanced">
+						<h1 class="title">个人中心</h1>
+					</header>
+					<ion-content class="has-header">
+						<ion-list>
+							<ion-item nav-clear menu-close href="#/app/search">
+								本地音乐
+							</ion-item>
+							<ion-item nav-clear menu-close href="#/app/browse">
+								我的收藏
+							</ion-item>
+							<ion-item nav-clear menu-close href="#/app/playlists">
+								我的电台
+							</ion-item>
+						</ion-list>
+					</ion-content>
+				</ion-side-menu>
+			</ion-side-menus>
+		</script>
+		<script id="playlists.html" type="text/ng-template">
+			<ion-view>
+				<ion-nav-buttons side="left">
+					<header class="bar bar-header bar-stable">
+						<button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+						<h1 class="title">XF Muise</h1>
+					</header>
+
+				</ion-nav-buttons>
+				<ion-content class="has-header">
+					<div class="bar bar-header item-input-inset bar-balanced">
+						<label class="item-input-wrapper">
+							<i class="icon ion-ios-search placeholder-icon"></i>
+							<input type="search" placeholder="请输入关键字" ng-model="$parent.keyword">
+						</label>
+						<button class="button button-clear" ng-click="search()">
+						 搜索
+						</button>
+					</div>
+						
+					<ion-list>
+						
+							<li class="item item-thumbnail-left" ng-repeat="lists in list" ng-click="clickPlay(lists.song_id)" id="{{lists.song_id}}">
+								<img ng-src="{{'https://img.xiami.net/'+lists.album_logo}}">
+								<h2>{{lists.song_name}}</h2>
+								<p>{{lists.artist_name}}</p>
+							</li>
+						
+							<li class="item item-thumbnail-left">
+								<img src="bbcbj.jpg">
+								<h2>小幸运</h2>
+								<p>田馥甄</p>
+							</li>
+	
+					</ion-list>
+				</ion-content>
+				<!--尾部-->
+				<div class="bore-foot" style="position:absolute; height:100px; width:100%; bottom:0; left: 0;">
+					<!--没有资源提醒-->
+					<div class="tips" ng-show="showTips">
+						<div class="message">
+							抱歉！没有资源。。。
+						</div>
+					</div>
+					<div class="process">
+						<div id="pro-bar"></div>
+					</div>
+					<!--弹出层-->
+					<div class="second-display" ng-show="showSecond">
+				        <div class="sec-title">
+				            <div class="close" ng-click="showSecond=!showSecond">
+				                <i class="ion-close"></i>
+				            </div>
+				            <div class="sec-info">
+				            
+				                <h5>{{playName?playName:'小幸运'}}</h5>
+				                <p style="font-size:12px;color:whitesmoke;">{{playSinger?playSinger:'田馥甄'}}</p>
+				            </div>
+				            <div class="sec-share">
+				                <i class="ion-thumbsup"></i>
+				            </div>
+				        </div>
+				        <div class="sec-cover" ng-click="showSecond=!showSecond">
+				            <img ng-src='{{playCover?playCover:"bbcbj.jpg"}}' alt="" >
+				        </div>
+				        <div class="lrctext">
+				        	<ul id="lrc_list">
+							</ul>
+				        </div>
+				    </div>
+					<!--当前播放-->
+					
+					<audio src="" id="player" ng-show="false"></audio>
+					<a class="item item-thumbnail-left item-balanced" ng-click="showSec()">
+						<img src="{{playCover?playCover:'bbcbj.jpg'}}">
+						<h2 style="color:black;">{{playName?playName:'小幸运'}}</h2>
+						<p style="color:black">{{playSinger?playSinger:'田馥甄'}}</p>
+					</a>
+					<div class="ctrl clearfix" style="position:absolute;z-index: 999; right:0; top:0;width:120px;height:90px;padding-top:40px;background:none;">
+					    <div class="ctrl-pre clearfix" ng-click="pre()">
+					        <i class="ion-ios-rewind" data-pack="ios"></i>
+					    </div>
+					    <div class="ctrl-play clearfix"  ng-click="play()">
+					        <i class="iconfont {{playIcon?'ion-ios-pause':'ion-ios-play'}}"></i>
+					    </div>
+					    <div class="ctrl-next clearfix" ng-click="next()">
+					        <i class="ion-ios-fastforward"></i>
+					    </div>
+					    <div id="times" class="clearfix">
+					        <i>00:00</i>
+					    </div>
+					</div>
+				</div>
+			</ion-view>
+		</script>
+	</body>
+
+</html>

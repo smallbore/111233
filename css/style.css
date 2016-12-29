@@ -1,0 +1,151 @@
+.clearfix {
+            zoom: 0;
+}
+.clearfix:after {
+            content: "";
+            display: block;
+            clear: both;
+            visibility: hidden;
+            height: 0;
+}
+.ctrl-pre{
+	color:orangered;
+	font-size:24px;
+	background:white;
+	 float:left; 
+	 width:26px;
+	 height:26px;
+	 border-radius:13px;
+	 text-align:text;
+	 padding-left:0px;
+	 margin-right:10px;
+	border:1px solid red;
+}
+.ctrl-play{
+	color:orangered;
+	font-size:24px;
+	background:white;
+	 float:left; 
+	 width:26px;
+	 height:26px;
+	 border-radius:13px;
+	 text-align:text;
+	 padding-left:7px;
+	 margin-right:10px;
+	border:1px solid red;
+}
+.ctrl-next{
+	color:orangered;
+	font-size:24px;
+	background:white;
+	 float:left; 
+	 width:26px;
+	 height:26px;
+	 border-radius:13px;
+	 text-align:text;
+	 padding-left:2px;
+	 margin-right:10px;
+	border:1px solid red;
+}
+.second-display{
+	position:absolute;
+	top:-590px;
+	left:0px;
+	height:600px;
+	width:100%;
+	background:url(../sconbg.jpg) no-repeat;
+	background-size:cover;
+}
+.close{
+	font-size:24px;
+	padding:10px;
+	float:left;
+	color:red;
+}
+.sec-info{
+	border-bottom:1px solid saddlebrown;
+	float:left;
+	margin-left:10px;
+	min-width:200px;
+}
+.sec-share{
+	float:right;
+	color:green;
+	font-size:24px;
+	padding-right:10px;
+	padding-top:10px;
+}
+.tips{
+	position:absolute;
+	z-index: 99;
+	top:-400px;
+	left:0;
+	width:100%;
+	height:200px;
+	background:rgba(200,200,200,0.5);
+	text-align: center;
+	line-height:200px;
+	font-size:24px;
+}
+.process{
+	position:absolute;
+	z-index: 99;
+	bottom:0;
+	left:0;
+	background:gray;
+	width:100%;
+	height:5px;
+}
+#pro-bar{
+	height:5px;
+	background:orangered
+}
+#times{
+	position:absolute;
+	bottom:0;
+	right:20px;
+	width:50px;
+	height:20px;
+	font-size:18px;
+	color:orangered;
+}
+.lrctext{
+	position:absolute;
+	left:30%;
+	top:60%;
+	width:200px;
+	height:200px;
+	overflow:hidden;
+	color:white;
+}
+#lrc_list li{
+    /*padding-bottom: 12px;*/
+    line-height: 22px;
+    transition: all .3s ease;
+
+}
+#lrc_list li.hover{
+    color:orangered;
+    transition: all .3s ease;
+}
+
+.sec-cover img{
+	position:absolute;
+	top:40%;
+	left:50%;
+	width:200px;
+	height:200px;
+	margin:-100px 0 0 -100px;
+	border-radius:50%;
+	border:5px solid salmon;
+	animation: zhuang 15s linear infinite;
+}
+@keyframes zhuang {
+	0%{
+			transform: rotate(0);
+	}
+
+	100%{
+			transform: rotate(360deg);
+	}
+}

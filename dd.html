@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html ng-app="smallbore">
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/angular.js"></script>
+	</head>
+	<body ng-controller="indexCrlt">
+		<input type="text" ng-model="keke">
+		{{keke}}
+	</body>
+	<script>
+		var app = angular.module('smallbore',[]);
+		app.controller('indexCrlt',function($scope){
+//			$scope.keke = "";
+			document.onkeydown = function(e){
+				var e = e || event;
+				if(e.keyCode == 13){
+					console.log($scope.keke)
+				};
+			}
+		})
+	</script>
+</html>
